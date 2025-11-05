@@ -1,8 +1,9 @@
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
+
 extern "C" int generate_random() {
-    std::srand(std::time(0));
-    return std::rand() % 100 + 1;
+    srand(time(0));
+    return rand() % 100 + 1;
 }
