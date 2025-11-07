@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "tytul": "Wysokie Napięcie",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 6,
+        "wiek": "12"
+    },
+    {
+        "id": 2,
+        "tytul": "Cytadela",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 8,
+        "wiek": "10"
+    },
+    {
+        "id": 3,
+        "tytul": "Carcassonne",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 6,
+        "wiek": "12"
+    },
+    {
+        "id": 4,
+        "tytul": "Diuna",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 6,
+        "wiek": "12"
+    },
+    {
+        "id": 5,
+        "tytul": "Tajemnicze Domostwo",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 7,
+        "wiek": "8"
+    },
+    {
+        "id": 6,
+        "tytul": "Eksplodujące Kotki",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 5,
+        "wiek": "7"
+    },
+    {
+        "id": 7,
+        "tytul": "Ubongo",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 4,
+        "wiek": "8"
+    },
+    {
+        "id": 8,
+        "tytul": "Tajniacy",
+        "minimalnaLiczbaGraczy": 4,
+        "maksymalnaLiczbaGraczy": 8,
+        "wiek": "10"
+    },
+    {
+        "id": 9,
+        "tytul": "Pingwiny z Madagaskaru",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 4,
+        "wiek": "10"
+    },
+    {
+        "id": 10,
+        "tytul": "Podaj dalej",
+        "minimalnaLiczbaGraczy": 4,
+        "maksymalnaLiczbaGraczy": 8,
+        "wiek": "12"
+    },
+    {
+        "id": 2,
+        "tytul": "Takenoko",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 4,
+        "wiek": "8"
+    },
+    {
+        "id": 2,
+        "tytul": "Gdybyś był...",
+        "minimalnaLiczbaGraczy": 2,
+        "maksymalnaLiczbaGraczy": 6,
+        "wiek": "12"
+    }
+]
