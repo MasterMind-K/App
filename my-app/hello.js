@@ -909,6 +909,8 @@ async function createWasm() {
 
   
 
+  var _emscripten_date_now = () => Date.now();
+
   var getCFunc = (ident) => {
       var func = Module['_' + ident]; // closure exported function
       assert(func, 'Cannot call unknown function ' + ident + ', make sure it is exported');
@@ -1647,7 +1649,8 @@ function assignWasmExports(wasmExports) {
 }
 
 var wasmImports = {
-  
+  /** @export */
+  emscripten_date_now: _emscripten_date_now
 };
 
 
