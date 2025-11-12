@@ -9,12 +9,13 @@ const ToDo: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [doneTasks, setDoneTasks] = useState<string[]>([]);
+    const [editIndex, setEditIndex] = useState<number | null>(null);
+    const [editValue, setEditValue] = useState('');
 
     const handleAddTask = () => setIsOpen(true);
     const handleClose = () => setIsOpen(false);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
-    
 
        useEffect(() => {
         const savedTasks = localStorage.getItem('tasks');
@@ -47,12 +48,36 @@ const ToDo: React.FC = () => {
         };
 
         const handleUndoBtn = (doneIndex: number) => {
-          const taskToMove = tasks[doneIndex];
+          const taskToMove = doneTasks[doneIndex];
             setTasks([...tasks, taskToMove]);
             setDoneTasks(doneTasks.filter((_, index) => index !== doneIndex));
-            setTasks([...tasks, inputValue]); //Nie działa przywracanie nazwy razem z całym zadaniem
         };
-  
+      
+        const handleEditBtn = (index: number) => {
+          setEditIndex(index);
+          setEditValue(tasks[index]);
+        }
+
+        const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setEditValue(e.target.value);
+        }
+
+        const handleEditClose = (index: number) => {
+          setEditIndex(index);
+          setEditValue('');
+        };
+
+        
+        const handleEditSave = () => {
+          if (editIndex !== null && editValue.trim() !== '') {
+            const updatedTasks = [...tasks];
+            updatedTasks[editIndex] = editValue;
+            setTasks(updatedTasks);
+            setEditIndex(null);
+            setEditValue('');
+          }
+        };
+        
 
     return (
     <div> 
@@ -87,10 +112,20 @@ const ToDo: React.FC = () => {
 
                 {tasks.map((task, index) => (
                   <div className="task" key={index}>
-                    <p>{task}</p>
-                    <button className="delBtn" onClick={() => handleDelBtn(index)}>Delete</button>
-                    <button className="editBtn">Edit</button>
-                    <button className="doneBtn" onClick={() => handleDoneBtn(index)}>Done</button>
+                    {editIndex === index ? (
+                      <>
+                        <input type="text" value={editValue} onChange={handleEditChange} />
+                        <button onClick={() => handleEditClose(index)}>Close</button>
+                        <button onClick={handleEditSave}>Change</button>
+                      </>
+                    ) : (
+                      <>
+                        <p>{task}</p>
+                        <button className="delBtn" onClick={() => handleDelBtn(index)}>Delete</button>
+                        <button className="editBtn" onClick={() => handleEditBtn(index)} >Edit</button>
+                        <button className="doneBtn" onClick={() => handleDoneBtn(index)}>Done</button>
+                      </>
+                    )}
                   </div>
                 ))}
 

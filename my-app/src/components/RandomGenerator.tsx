@@ -93,3 +93,5 @@ const RandomGenerator: React.FC = () => {
 };
 
 export default RandomGenerator;
+
+//Imie chyba zmienia się o 11`
