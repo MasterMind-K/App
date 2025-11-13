@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import names from '../assets/imiona.json';
 
-const RandomGenerator: React.FC = () => {
+interface RandomGeneratorProps {
+  intervalMs?: number; // czas w milisekundach, domyślnie 24h
+}
+
+const RandomGenerator: React.FC<RandomGeneratorProps> = ({ intervalMs = 86400000 }) => {
   const [name, setName] = useState<string | null>(null);
   const [generateRandom, setGenerateRandom] = useState<(() => number) | null>(null);
   const [lastDrawTime, setLastDrawTime] = useState<number>(Date.now());
@@ -29,17 +33,7 @@ const RandomGenerator: React.FC = () => {
     loadWasm();
   }, []);
 
-  const saveNameToFile = (name: string) => {
-    fetch('http://localhost:3001/save-name', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name })
-    })
-      .then(() => console.log('Wysłano do backendu'))
-      .catch(err => console.error('Błąd wysyłania:', err));
-  };
-
-  // Funkcja do logowania czasu od ostatniego losowania
+  // Logowanie czasu od ostatniego losowania
   useEffect(() => {
     const logInterval = setInterval(() => {
       const now = Date.now();
@@ -48,11 +42,12 @@ const RandomGenerator: React.FC = () => {
       const elapsedMin = Math.floor(elapsedSec / 60);
       const elapsedHours = Math.floor(elapsedMin / 60);
       console.log(`Minęło: ${elapsedHours}h ${elapsedMin % 60}m ${elapsedSec % 60}s od ostatniego losowania`);
-    }, 1000000); // co ~16 minut
+    }, 5000); // co 5 sekund (debug)
 
     return () => clearInterval(logInterval);
   }, [lastDrawTime]);
 
+ 
   useEffect(() => {
     const savedName = localStorage.getItem('name');
     if (savedName) {
@@ -61,29 +56,32 @@ const RandomGenerator: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('name', JSON.stringify(name));
+    if (name) {
+      localStorage.setItem('name', JSON.stringify(name));
+    }
   }, [name]);
 
   useEffect(() => {
-    if (generateRandom && !name) {
-      const initialIndex = generateRandom() % names.length;
-      const selectedName = names[initialIndex];
-      setName(selectedName);
-      saveNameToFile(selectedName);
-      setLastDrawTime(Date.now());
+    if (generateRandom) {
+      if (!name) {
+        const initialIndex = generateRandom() % names.length;
+        const selectedName = names[initialIndex];
+        setName(selectedName);
+        setLastDrawTime(Date.now());
+        console.log("Pierwsze imię:", selectedName);
+      }
 
       const interval = setInterval(() => {
         const newIndex = generateRandom() % names.length;
         const newName = names[newIndex];
         setName(newName);
-        saveNameToFile(newName);
         setLastDrawTime(Date.now());
-        window.location.reload();
-      }, 86400000); // 24h
+        console.log("Losuję nowe imię:", newName);
+      }, intervalMs);
 
       return () => clearInterval(interval);
     }
-  }, [generateRandom, name]);
+  }, [generateRandom, name, intervalMs]);
 
   return (
     <div>
@@ -93,5 +91,3 @@ const RandomGenerator: React.FC = () => {
 };
 
 export default RandomGenerator;
-
-//Imie chyba zmienia się o 11`
