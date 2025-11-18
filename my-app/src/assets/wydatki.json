@@ -1,0 +1,62 @@
+[
+    {
+        "category": "IT",
+        "description": "laptop",
+        "price": 3000
+    },
+    {
+        "category": "IT",
+        "description": "klawiatura",
+        "price": 50
+    },
+    {
+        "category": "IT",
+        "description": "myszka",
+        "price": 30
+    },
+    {
+        "category": "IT",
+        "description": "monitor",
+        "price": 3000
+    },
+    {
+        "category": "biurowe",
+        "description": "długopis",
+        "price": 3
+    },
+    {
+        "category": "biurowe",
+        "description": "kartki A4",
+        "price": 30
+    },
+    {
+        "category": "biurowe",
+        "description": "flamastry",
+        "price": 15
+    },
+    {
+        "category": "biurowe",
+        "description": "gąbka do tablicy",
+        "price": 10
+    },
+    {
+        "category": "zaopatrzenie",
+        "description": "herbata",
+        "price": 30
+    },
+    {
+        "category": "zaopatrzenie",
+        "description": "kawa",
+        "price": 100
+    },
+    {
+        "category": "zaopatrzenie",
+        "description": "cukier",
+        "price": 6
+    },
+    {
+        "category": "zaopatrzenie",
+        "description": "papier toaletowy",
+        "price": 10
+    }
+]

@@ -8,6 +8,7 @@ const GamePage: React.FC = () => {
     title: string;
     minNumberOfGamers: number;
     maxNumberOfGamers: number;
+    numberOfGamers: number;
     age: number;
   }
   const [games, setGames] = useState<Game[]>([]);
@@ -24,14 +25,35 @@ const GamePage: React.FC = () => {
           const module = (window as any).Module;
           if (module && module.cwrap) {
             clearInterval(checkModule);
-            const wrapped = module.cwrap('wypisaniePoId', 'string', []);
-            const jsonString = wrapped();
-            const parsed = JSON.parse(jsonString);
-            console.log("Parsed games:", parsed);
-            parsed.forEach((g: Game) => {
-              console.log("Max players for", g.title, ":", g.maxNumberOfGamers);
-            });
-            setGames(parsed);
+            const byId = module.cwrap('wypisaniePoId', 'string', []);
+            const byAlphabet = module.cwrap('sortingByAlphabet', 'string', []);
+            const byAge = module.cwrap('sortingByAge', 'string', []);
+            const byMaxPlayers = module.cwrap('sortingByMaxNumberOfGamers', 'string', []);
+            const byMinPlayers = module.cwrap('sortingByMinNumberOfGamers', 'string', []);
+            const byNumberOfGamers = module.cwrap('sortingByNumberOfGamers', 'string', []);
+            function handleResult(jsonString: string) {
+              const parsed = JSON.parse(jsonString);
+              setGames(parsed);
+            }
+
+            document.getElementById('byId')!.onclick = () => {
+              handleResult(byId());
+            };
+            document.getElementById('byAlphabet')!.onclick = () => {
+              handleResult(byAlphabet());
+            };
+            document.getElementById('byAge')!.onclick = () => {
+              handleResult(byAge());
+            };
+            document.getElementById('byMaxPlayers')!.onclick = () => {
+              handleResult(byMaxPlayers());
+            };
+            document.getElementById('byMinPlayers')!.onclick = () => {
+              handleResult(byMinPlayers());
+            };
+            document.getElementById('byNumberOfGamers')!.onclick = () => {
+              handleResult(byNumberOfGamers());
+            }
           }
         }, 100);
       };
@@ -39,6 +61,7 @@ const GamePage: React.FC = () => {
 
     loadWasm();
   }, []);
+
 
   return (
     <>
@@ -61,22 +84,26 @@ const GamePage: React.FC = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/random-generator">Random Generator</Link></li>
             <li><Link to="/game">Games reservation</Link></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><Link to="/XO">XO Game</Link></li>
+            <li><Link to="/expenses">Expenses Tracker</Link></li>
+
+
           </ul>
         </nav>
 
         <main>
           <section className="main-section">
             <h1>Game Reservation</h1>
-            <p>Here you can reserve a game board</p>
+            <p>Here you can reserve boardgames</p>
             <br />
 
             <section className="button-section">
-              <button>Po ID</button>
-              <button>Alfabetycznie</button>
-              <button>Wg wieu graczy</button>
-              <button>Wg maksymalnej liczby graczy</button>
-              <button>Wg minimalnej liczby graczy</button>
+              <button id="byId">by ID</button>
+              <button id="byAlphabet">by alphabet</button>
+              <button id="byAge">by age</button>
+              <button id="byMinPlayers">by min number of players</button>
+              <button id="byMaxPlayers">by max number of players</button>
+              <button id="byNumberOfGamers">by number of players</button>
             </section>
 
             <table>

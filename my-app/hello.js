@@ -1798,6 +1798,11 @@ function checkIncomingModuleAPI() {
 // Imports from the Wasm binary.
 var _generate_random = Module['_generate_random'] = makeInvalidEarlyAccess('_generate_random');
 var _wypisaniePoId = Module['_wypisaniePoId'] = makeInvalidEarlyAccess('_wypisaniePoId');
+var _sortingByAlphabet = Module['_sortingByAlphabet'] = makeInvalidEarlyAccess('_sortingByAlphabet');
+var _sortingByAge = Module['_sortingByAge'] = makeInvalidEarlyAccess('_sortingByAge');
+var _sortingByNumberOfGamers = Module['_sortingByNumberOfGamers'] = makeInvalidEarlyAccess('_sortingByNumberOfGamers');
+var _sortingByMinNumberOfGamers = Module['_sortingByMinNumberOfGamers'] = makeInvalidEarlyAccess('_sortingByMinNumberOfGamers');
+var _sortingByMaxNumberOfGamers = Module['_sortingByMaxNumberOfGamers'] = makeInvalidEarlyAccess('_sortingByMaxNumberOfGamers');
 var _fflush = makeInvalidEarlyAccess('_fflush');
 var _strerror = makeInvalidEarlyAccess('_strerror');
 var _emscripten_stack_init = makeInvalidEarlyAccess('_emscripten_stack_init');
@@ -1816,6 +1821,16 @@ function assignWasmExports(wasmExports) {
   _generate_random = Module['_generate_random'] = createExportWrapper('generate_random', 0);
   assert(typeof wasmExports['wypisaniePoId'] != 'undefined', 'missing Wasm export: wypisaniePoId');
   _wypisaniePoId = Module['_wypisaniePoId'] = createExportWrapper('wypisaniePoId', 0);
+  assert(typeof wasmExports['sortingByAlphabet'] != 'undefined', 'missing Wasm export: sortingByAlphabet');
+  _sortingByAlphabet = Module['_sortingByAlphabet'] = createExportWrapper('sortingByAlphabet', 0);
+  assert(typeof wasmExports['sortingByAge'] != 'undefined', 'missing Wasm export: sortingByAge');
+  _sortingByAge = Module['_sortingByAge'] = createExportWrapper('sortingByAge', 0);
+  assert(typeof wasmExports['sortingByNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByNumberOfGamers');
+  _sortingByNumberOfGamers = Module['_sortingByNumberOfGamers'] = createExportWrapper('sortingByNumberOfGamers', 0);
+  assert(typeof wasmExports['sortingByMinNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByMinNumberOfGamers');
+  _sortingByMinNumberOfGamers = Module['_sortingByMinNumberOfGamers'] = createExportWrapper('sortingByMinNumberOfGamers', 0);
+  assert(typeof wasmExports['sortingByMaxNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByMaxNumberOfGamers');
+  _sortingByMaxNumberOfGamers = Module['_sortingByMaxNumberOfGamers'] = createExportWrapper('sortingByMaxNumberOfGamers', 0);
   assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
   _fflush = createExportWrapper('fflush', 1);
   assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
