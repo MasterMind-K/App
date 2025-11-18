@@ -2,6 +2,8 @@
 #include <ctime>
 #include <algorithm>
 #include <iostream>
+#include <string>
+#include <sstream>
 #define SIZE 12
 
 using namespace std;
@@ -34,66 +36,85 @@ Game games[]={
     };
 
 
-int size = sizeof(games) / sizeof(games[0]);
+int gameCount = sizeof(games) / sizeof(games[0]);
 
 
 
 
-extern "C" int wypisaiePoId(){
+// extern "C" int wypisaiePoId(){
+//         for (int i = 0; i < size; i++) {
+//         cout << "Title: " << games[i].title << endl;
+//         cout << "Number of players: " << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers << endl;
+//         cout << "Age: " << games[i].age << endl;
+//         cout << endl;
+//         }
+    
+//     // return 0;//na razie jest git, potem bedzie zwracac coś
+// }
 
-    for (int i = 0; i < size; i++) {
-        cout << "Title: " << games[i].title << endl;
-        cout << "Number of players: " << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers << endl;
-        cout << "Age: " << games[i].age << endl;
-        cout << endl;
+extern "C" const char* wypisaniePoId() {
+    ostringstream oss;
+    oss << "[";
+    for (int i = 0; i < gameCount; i++) {
+        oss << "{"
+            << "\"title\":\"" << games[i].title << "\","
+            << "\"minNumberOfGamers\":" << games[i].minNumberOfGamers << ","
+            << "\"maxNumberOfGamers\":" << games[i].maxNumberOfGamers << ","
+            << "\"age\":" << games[i].age
+            << "}";
+        if (i < gameCount - 1) oss << ",";
     }
-    return 0;//na razie jest git, potem bedzie zwracac coś
+    oss << "]";
+    static string result = oss.str();
+    return result.c_str();
 }
+    // return 0;//na razie jest git, potem bedzie zwracac coś
 
-extern "C" int sortingByAlphabet(){
-    sort(games, games + size, [](const Game &a, const Game &b){
-        return a.title < b.title;
-    });
 
-    for(int i = 0; i < size; i++){
-        cout << games[i].title;
-        cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
-        cout << games[i].age << "+" << endl;
-    }
-}
+// extern "C" int sortingByAlphabet(){
+//     sort(games, games + gameCount, [](const Game &a, const Game &b){
+//         return a.title < b.title;
+//     });
 
-extern "C" int sortingByAge(){
-    sort(games, games + size, [](const Game &a, const Game &b){
-        return a.age < b.age;
-    });
+//     for(int i = 0; i < gameCount; i++){
+//         cout << games[i].title;
+//         cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
+//         cout << games[i].age << "+" << endl;
+//     }
+// }
 
-    for(int i = 0; i < size; i++){
-        cout << games[i].title;
-        cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
-        cout << games[i].age << "+" << endl;
-    }
-}
+// extern "C" int sortingByAge(){
+//     sort(games, games + gameCount, [](const Game &a, const Game &b){
+//         return a.age < b.age;
+//     });
 
-extern "C" int sortingByMaxNumberOfGamers(){
-    sort(games, games + size, [](const Game &a, const Game &b){
-        return a.maxNumberOfGamers > b.maxNumberOfGamers;
-    });
+//     for(int i = 0; i < gameCount; i++){
+//         cout << games[i].title;
+//         cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
+//         cout << games[i].age << "+" << endl;
+//     }
+// }
 
-    for(int i = 0; i < size; i++){
-        cout << games[i].title;
-        cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
-        cout << games[i].age << "+" << endl;
-    }
-}
+// extern "C" int sortingByMaxNumberOfGamers(){
+//     sort(games, games + gameCount, [](const Game &a, const Game &b){
+//         return a.maxNumberOfGamers > b.maxNumberOfGamers;
+//     });
 
-extern "C" int sortingByMinNumberOfGamers(){
-    sort(games, games + size, [](const Game &a, const Game &b){
-        return a.minNumberOfGamers > b.minNumberOfGamers;
-    });
+//     for(int i = 0; i < gameCount; i++){
+//         cout << games[i].title;
+//         cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
+//         cout << games[i].age << "+" << endl;
+//     }
+// }
 
-    for(int i = 0; i < size; i++){
-        cout << games[i].title;
-        cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
-        cout << games[i].age << "+" << endl;
-    }
-}
+// extern "C" int sortingByMinNumberOfGamers(){
+//     sort(games, games + gameCount, [](const Game &a, const Game &b){
+//         return a.minNumberOfGamers > b.minNumberOfGamers;
+//     });
+
+//     for(int i = 0; i < gameCount; i++){
+//         cout << games[i].title;
+//         cout << games[i].minNumberOfGamers << "-" << games[i].maxNumberOfGamers;
+//         cout << games[i].age << "+" << endl;
+//     }
+// }
