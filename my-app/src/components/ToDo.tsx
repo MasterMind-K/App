@@ -89,11 +89,11 @@ const ToDo: React.FC = () => {
         </header>
          
             <nav>
-             <ul>
-               <li><Link to="/">Home</Link></li>
-               <li><Link to="/toDo-List">To do list</Link></li>
-               <li><a href="services.html">Services</a></li>
-               <li><a href="/Quiz">Quiz</a></li>
+             <ul className='nav-links'>
+               <li className='links'><Link to="/">Home</Link></li>
+               <li className='links'><Link to="/toDo-List">To do list</Link></li>
+               <li className='links'><a href="services.html">Services</a></li>
+               <li className='links'><a href="/Quiz">Quiz</a></li>
              </ul>
             </nav>
             

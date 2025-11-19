@@ -55,32 +55,34 @@ const Quiz: React.FC = () => {
       </header>
 
       <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/toDo-List">To do list</Link></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="/Quiz">Quiz</a></li>
+        <ul className='nav-links'>
+          <li className='links'><Link to="/">Home</Link></li>
+          <li className='links'><Link to="/toDo-List">To do list</Link></li>
+          <li className='links'><a href="services.html">Services</a></li>
+          <li className='links'><a href="/Quiz">Quiz</a></li>
         </ul>
       </nav>
 
       {!finished ? (
-        <div>
+        <div className='quiz-container'>
           <h2>{questions[currentQuestion].question}</h2>
-          <ul>
+          <ul className='options-list'>
             {questions[currentQuestion].options.map((opt) => (
-              <li key={opt}>
+              <li className='option' key={opt}>
                 <label>
                   <input
+                    className='checkbox'
                     type="checkbox"
                     checked={selected.includes(opt)}
                     onChange={() => toggleAnswer(opt)}
                   />
-                  {opt}
+                  <span>{opt}</span>
                 </label>
               </li>
             ))}
           </ul>
-          <button onClick={checkAnswer}>Zatwierdź odpowiedź</button>
+
+          <button className='nextQuestion' onClick={checkAnswer}>Zatwierdź odpowiedź</button>
         </div>
       ) : (
         <h2>Twój wynik: {score} / {questions.length}</h2>

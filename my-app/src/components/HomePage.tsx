@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet';
 import photo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import RandomGenerator from './RandomGenerator';
-const HomePage : React.FC = () => {
-  
+const HomePage: React.FC = () => {
 
-return (
+
+  return (
     <>
       <Helmet>
         <title>Home Page - SpyroNet</title>
@@ -18,32 +18,32 @@ return (
 
       <div>
         <header>
-            <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-            <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator/></h3></section>
+          <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
+          <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator /></h3></section>
         </header>
-         
-            <nav>
-             <ul>
-               <li><Link to="/">Home</Link></li>
-               <li><Link to="/toDo-List">To do list</Link></li>
-               <li><a href="services.html">Services</a></li>
-              <li><a href="/Quiz">Quiz</a></li>
-             </ul>
-            </nav>
+
+        <nav>
+          <ul className='nav-links'>
+            <li className='links'><Link to="/">Home</Link></li>
+            <li className='links'><Link to="/toDo-List">To do list</Link></li>
+            <li className='links'><a href="services.html">Services</a></li>
+            <li className='links'><a href="/Quiz">Quiz</a></li>
+          </ul>
+        </nav>
 
         <main>
-            <section className="main-section">
-                <h1>Welcome to SpyroNet</h1>
-                <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" alt="Description of image" />
-                <p>Your trusted partner in cybersecurity solutions. At Spyronet, we specialize in providing top-notch
-                    services to protect your digital assets and ensure your online safety.</p>
-                <p>Explore our website to learn more about our offerings and how we can help you stay secure in the digital
-                    world.</p>
-            </section>
+          <section className="main-section">
+            <h1>Welcome to SpyroNet</h1>
+            <img src="https://itwiz.pl/wp-content/uploads/2022/03/spyrosoft-gielda.jpg" alt="Description of image" />
+            <p>Your trusted partner in cybersecurity solutions. At Spyronet, we specialize in providing top-notch
+              services to protect your digital assets and ensure your online safety.</p>
+            <p>Explore our website to learn more about our offerings and how we can help you stay secure in the digital
+              world.</p>
+          </section>
         </main>
         <footer>by Katarzyna Dabrowska & Kaja Wojcik</footer>
       </div>
-</>
+    </>
   );
 };
 export default HomePage;
