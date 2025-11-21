@@ -21,17 +21,22 @@
     throw new Error(`This emscripten-generated code requires node v${ packedVersionToHumanReadable(160000) } (detected v${packedVersionToHumanReadable(currentNodeVersion)})`);
   }
 
-  var currentSafariVersion = typeof navigator !== 'undefined' && navigator.userAgent?.includes("Safari/") && navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/) ? humanReadableVersionToPacked(navigator.userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/)[1]) : TARGET_NOT_SUPPORTED;
+  var userAgent = typeof navigator !== 'undefined' && navigator.userAgent;
+  if (!userAgent) {
+    return;
+  }
+
+  var currentSafariVersion = userAgent.includes("Safari/") && userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/) ? humanReadableVersionToPacked(userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentSafariVersion < 150000) {
     throw new Error(`This emscripten-generated code requires Safari v${ packedVersionToHumanReadable(150000) } (detected v${currentSafariVersion})`);
   }
 
-  var currentFirefoxVersion = typeof navigator !== 'undefined' && navigator.userAgent?.match(/Firefox\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
+  var currentFirefoxVersion = userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/) ? parseFloat(userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentFirefoxVersion < 79) {
     throw new Error(`This emscripten-generated code requires Firefox v79 (detected v${currentFirefoxVersion})`);
   }
 
-  var currentChromeVersion = typeof navigator !== 'undefined' && navigator.userAgent?.match(/Chrome\/(\d+(?:\.\d+)?)/) ? parseFloat(navigator.userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
+  var currentChromeVersion = userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/) ? parseFloat(userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
   if (currentChromeVersion < 85) {
     throw new Error(`This emscripten-generated code requires Chrome v85 (detected v${currentChromeVersion})`);
   }
@@ -1818,40 +1823,40 @@ var wasmMemory = makeInvalidEarlyAccess('wasmMemory');
 
 function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['generate_random'] != 'undefined', 'missing Wasm export: generate_random');
-  _generate_random = Module['_generate_random'] = createExportWrapper('generate_random', 0);
   assert(typeof wasmExports['wypisaniePoId'] != 'undefined', 'missing Wasm export: wypisaniePoId');
-  _wypisaniePoId = Module['_wypisaniePoId'] = createExportWrapper('wypisaniePoId', 0);
   assert(typeof wasmExports['sortingByAlphabet'] != 'undefined', 'missing Wasm export: sortingByAlphabet');
-  _sortingByAlphabet = Module['_sortingByAlphabet'] = createExportWrapper('sortingByAlphabet', 0);
   assert(typeof wasmExports['sortingByAge'] != 'undefined', 'missing Wasm export: sortingByAge');
-  _sortingByAge = Module['_sortingByAge'] = createExportWrapper('sortingByAge', 0);
   assert(typeof wasmExports['sortingByNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByNumberOfGamers');
-  _sortingByNumberOfGamers = Module['_sortingByNumberOfGamers'] = createExportWrapper('sortingByNumberOfGamers', 0);
   assert(typeof wasmExports['sortingByMinNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByMinNumberOfGamers');
-  _sortingByMinNumberOfGamers = Module['_sortingByMinNumberOfGamers'] = createExportWrapper('sortingByMinNumberOfGamers', 0);
   assert(typeof wasmExports['sortingByMaxNumberOfGamers'] != 'undefined', 'missing Wasm export: sortingByMaxNumberOfGamers');
-  _sortingByMaxNumberOfGamers = Module['_sortingByMaxNumberOfGamers'] = createExportWrapper('sortingByMaxNumberOfGamers', 0);
   assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
-  _fflush = createExportWrapper('fflush', 1);
   assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
-  _strerror = createExportWrapper('strerror', 1);
   assert(typeof wasmExports['emscripten_stack_init'] != 'undefined', 'missing Wasm export: emscripten_stack_init');
-  _emscripten_stack_init = wasmExports['emscripten_stack_init'];
   assert(typeof wasmExports['emscripten_stack_get_free'] != 'undefined', 'missing Wasm export: emscripten_stack_get_free');
-  _emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'];
   assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
-  _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
   assert(typeof wasmExports['emscripten_stack_get_end'] != 'undefined', 'missing Wasm export: emscripten_stack_get_end');
-  _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
   assert(typeof wasmExports['_emscripten_stack_restore'] != 'undefined', 'missing Wasm export: _emscripten_stack_restore');
-  __emscripten_stack_restore = wasmExports['_emscripten_stack_restore'];
   assert(typeof wasmExports['_emscripten_stack_alloc'] != 'undefined', 'missing Wasm export: _emscripten_stack_alloc');
-  __emscripten_stack_alloc = wasmExports['_emscripten_stack_alloc'];
   assert(typeof wasmExports['emscripten_stack_get_current'] != 'undefined', 'missing Wasm export: emscripten_stack_get_current');
-  _emscripten_stack_get_current = wasmExports['emscripten_stack_get_current'];
   assert(typeof wasmExports['memory'] != 'undefined', 'missing Wasm export: memory');
-  memory = wasmMemory = wasmExports['memory'];
   assert(typeof wasmExports['__indirect_function_table'] != 'undefined', 'missing Wasm export: __indirect_function_table');
+  _generate_random = Module['_generate_random'] = createExportWrapper('generate_random', 0);
+  _wypisaniePoId = Module['_wypisaniePoId'] = createExportWrapper('wypisaniePoId', 0);
+  _sortingByAlphabet = Module['_sortingByAlphabet'] = createExportWrapper('sortingByAlphabet', 0);
+  _sortingByAge = Module['_sortingByAge'] = createExportWrapper('sortingByAge', 0);
+  _sortingByNumberOfGamers = Module['_sortingByNumberOfGamers'] = createExportWrapper('sortingByNumberOfGamers', 0);
+  _sortingByMinNumberOfGamers = Module['_sortingByMinNumberOfGamers'] = createExportWrapper('sortingByMinNumberOfGamers', 0);
+  _sortingByMaxNumberOfGamers = Module['_sortingByMaxNumberOfGamers'] = createExportWrapper('sortingByMaxNumberOfGamers', 0);
+  _fflush = createExportWrapper('fflush', 1);
+  _strerror = createExportWrapper('strerror', 1);
+  _emscripten_stack_init = wasmExports['emscripten_stack_init'];
+  _emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'];
+  _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
+  _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
+  __emscripten_stack_restore = wasmExports['_emscripten_stack_restore'];
+  __emscripten_stack_alloc = wasmExports['_emscripten_stack_alloc'];
+  _emscripten_stack_get_current = wasmExports['emscripten_stack_get_current'];
+  memory = wasmMemory = wasmExports['memory'];
   __indirect_function_table = wasmExports['__indirect_function_table'];
 }
 

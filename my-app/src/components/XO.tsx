@@ -10,9 +10,6 @@ const MainInlineStyle: React.CSSProperties = {
     justifyContent: 'center',
 }
 
-const GamePartsInlineStyles: React.CSSProperties = {
-    margin: 'auto',
-}
 
 interface SquareProps {
     value: string | null;
@@ -133,14 +130,14 @@ const XO: React.FC = () => {
                 </header>
 
                 <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/random-generator">Random Generator</Link></li>
-                        <li><Link to="/game">Games reservation</Link></li>
-                        <li><Link to="/XO">XO Game</Link></li>
-                        <li><Link to="/expenses">Expenses Tracker</Link></li>
-                        <li><Link to="/t-shirts">Koszulki firmowe</Link></li>
-
+                    <ul className='nav-links'>
+                        <li className='links'><Link to="/">Home</Link></li>
+                        <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
+                        <li className='links'><Link to="/Quiz">Quiz</Link></li>
+                        <li className='links'><Link to="/game">Games reservation</Link></li>
+                        <li className='links'><Link to="/XO">XO Game</Link></li>
+                        <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
+                        <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
                     </ul>
                 </nav>
 

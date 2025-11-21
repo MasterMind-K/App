@@ -1,0 +1,88 @@
+[
+    {
+        "question": "W jakim roku urodził się Tomasz?",
+        "options": ["1670", "1980", "1975", "1974"],
+        "answer": "1975"
+    },
+    {
+        "question": "Jaką szkołe ukończył?",
+        "options": ["Politechnika Warszawska", "Politechnika Wrocławska", "Politechnika Gdańska", "Politechnika Krakowska"],
+        "answer": "Politechnika Wrocławska"
+    },
+    {
+        "question": "Z jaką oceną?",
+        "options": ["5", "4,5", "4", "3"],
+        "answer": "5"
+    },
+    {
+        "question": "Gdzie wcześniej pracował?",
+        "options": ["Siemens", "Nokia", "ComputerSoft", "GlobalLogic"],
+        "answer": "GlobalLogic"
+    },
+    {
+        "question": "Czy ma dzieci?",
+        "options": ["Tak, ma jednego syna", "Nie, nie ma", "Tak, ma jedną córkę", "Tak, ma dwoje dzieci"],
+        "answer": "Tak, ma jedną córkę"
+    },
+    {
+        "question": "Jaka jest jego ulubiona drużyna w F1",
+        "options": ["Ferrari", "McLaren", "Redbull", "Mercedes"],
+        "answer": "Ferrari"
+    },
+    {
+        "question": "Ile najwięcej lad 1500 miał Sitek?",
+        "options": ["5", "3", "4", "Nigdy nie miał lady 1500"],
+        "answer": "3"
+    },
+    {
+        "question": "Kim jest Sitek w firmie?",
+        "options": ["Software Inżynierem", "Dyrektorem działu", "Menadżerem liniowym", "Serion IT Supportem"],
+        "answer": "Menadżerem liniowym"
+    },
+    {
+        "question": "Jakie sporty uprawia?(wielokrotny wybór)",
+        "options": ["skoki z balonu", "pływanie", "chodzenie z kijkami", "karate"],
+        "answer": ["skoki z balonu", "pływanie", "chodzenie z kijkami"]
+    },
+    {
+        "question": "Jak ma na imię jego córka?",
+        "options": ["Zofia", "Basia", "Lena", "Adelajda"],
+        "answer": "Lena"
+    },
+    {
+        "question": "Jakie ma zwierzaki?",
+        "options": ["cztery czarne psy", "dwa rude koty", "zielony gekon", "dwa żółte kanarki"],
+        "answer": "dwa rude koty"
+    },
+    {
+        "question": "Na co dostał talon od Spyrosoftu?",
+        "options": ["Na k.. i balon", "na rower", "na skok ze spadochronu", "na dzień wolny od pracy"],
+        "answer": "na rower"
+    },
+    {
+        "question": "Jaki ma kolor oczu?",
+        "options": ["niebieskie", "zielone", "brązowe", "szare"],
+        "answer": "brązowe"
+    },
+    {
+        "question": "Jak nazywa się jedo samochód który bierze udział w zawodach Złombol?",
+        "options": ["Ładunia", "MegaŁada", "ZagŁada", "Po co autu imię?"],
+        "answer": "ZagŁada"
+    },
+    {
+        "question": "Ulubiony serial na netflixie?",
+        "options": ["1670", "Heweliusz", "Dr.House", "Breaking Bad"],
+        "answer": "1670"
+    },
+    {
+        "question": "Ile razy w tygodniu jest na 'koksowni'?",
+        "options": ["1", "2", "6", "Czym jest koksownia?"],
+        "answer": "2"
+    },
+    {
+        "question": "W jakim parku można go najczęściej spotkać?",
+        "options": ["Szcytnickim", "Grabiszyńskim", "Południowym", "Tyśiąćlecia"],
+        "answer": "Grabiszyńskim"
+    }
+ 
+]

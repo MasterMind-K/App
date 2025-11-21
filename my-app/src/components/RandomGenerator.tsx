@@ -1,9 +1,14 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import names from '../assets/imiona.json';
 
-const RandomGenerator: React.FC = () => {
+interface RandomGeneratorProps {
+  intervalMs?: number; // czas w milisekundach, domyślnie 24h
+}
+
+const RandomGenerator: React.FC<RandomGeneratorProps> = ({ intervalMs = 86400000 }) => {
   const [name, setName] = useState<string | null>(null);
   const [generateRandom, setGenerateRandom] = useState<(() => number) | null>(null);
+  const [lastDrawTime, setLastDrawTime] = useState<number>(Date.now());
 
   // Ładowanie WebAssembly
   useEffect(() => {
@@ -28,27 +33,58 @@ const RandomGenerator: React.FC = () => {
     loadWasm();
   }, []);
 
+  // Logowanie czasu od ostatniego losowania
   useEffect(() => {
-  if (generateRandom) {
-    // Ustawiamy pierwsze imię
-    const initialIndex = generateRandom() % names.length;
-    setName(names[initialIndex]);
+    const logInterval = setInterval(() => {
+      const now = Date.now();
+      const elapsedMs = now - lastDrawTime;
+      const elapsedSec = Math.floor(elapsedMs / 1000);
+      const elapsedMin = Math.floor(elapsedSec / 60);
+      const elapsedHours = Math.floor(elapsedMin / 60);
+    }, 5000); // co 5 sekund (debug)
 
-    // Co 24h losujemy nowe imię
-    const interval = setInterval(() => {  
-    const newIndex = generateRandom() % names.length;
-      window.location.reload();
-      setName(names[newIndex]);
-    }, 86400000); // 24h
+    return () => clearInterval(logInterval);
+  }, [lastDrawTime]);
 
-    return () => clearInterval(interval);
-  }
-}, [generateRandom]);
+ 
+  useEffect(() => {
+    const savedName = localStorage.getItem('name');
+    if (savedName) {
+      setName(JSON.parse(savedName));
+    }
+  }, []);
 
+  useEffect(() => {
+    if (name) {
+      localStorage.setItem('name', JSON.stringify(name));
+    }
+  }, [name]);
+
+  useEffect(() => {
+    if (generateRandom) {
+      if (!name) {
+        const initialIndex = generateRandom() % names.length;
+        const selectedName = names[initialIndex];
+        setName(selectedName);
+        setLastDrawTime(Date.now());
+        console.log("Pierwsze imię:", selectedName);
+      }
+
+      const interval = setInterval(() => {
+        const newIndex = generateRandom() % names.length;
+        const newName = names[newIndex];
+        setName(newName);
+        setLastDrawTime(Date.now());
+        console.log("Losuję nowe imię:", newName);
+      }, intervalMs);
+
+      return () => clearInterval(interval);
+    }
+  }, [generateRandom, name, intervalMs]);
 
   return (
-    <div> 
-      <p>{name}</p>
+    <div>
+      {name ? <p>{name}</p> : <p>Ładuję imię...</p>}
     </div>
   );
 };
