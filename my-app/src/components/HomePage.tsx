@@ -65,6 +65,7 @@ const HomePage: React.FC = () => {
             <li className='links'><Link to="/XO">XO Game</Link></li>
             <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
             <li className='links'><Link to="/t-shirts">Koszulki firmowe</Link></li>
+            <li className='links'><Link to="/led">LED</Link></li>
           </ul>
         </nav>
 

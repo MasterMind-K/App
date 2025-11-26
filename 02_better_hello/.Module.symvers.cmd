@@ -1,0 +1,1 @@
+savedcmd_/home/spyro/App/02_better_hello/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/spyro/App/02_better_hello/Module.symvers -T /home/spyro/App/02_better_hello/modules.order -i Module.symvers -e 

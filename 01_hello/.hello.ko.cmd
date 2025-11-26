@@ -1,0 +1,1 @@
+savedcmd_/home/spyro/App/01_hello/hello.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/spyro/App/01_hello/hello.ko /home/spyro/App/01_hello/hello.o /home/spyro/App/01_hello/hello.mod.o /home/spyro/App/01_hello/.module-common.o
