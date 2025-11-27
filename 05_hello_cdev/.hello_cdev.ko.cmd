@@ -1,0 +1,1 @@
+savedcmd_/home/spyro/App/05_hello_cdev/hello_cdev.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/spyro/App/05_hello_cdev/hello_cdev.ko /home/spyro/App/05_hello_cdev/hello_cdev.o /home/spyro/App/05_hello_cdev/hello_cdev.mod.o /home/spyro/App/05_hello_cdev/.module-common.o

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
+#include <fcntl.h>
+#include <unistd.h>
 #define SIZE 12
 
 using namespace std;
@@ -169,3 +172,16 @@ extern "C" const char* sortingByMaxNumberOfGamers(){
     static string result = oss.str();
     return result.c_str();
 }
+
+static struct gpio_desc *led;
+
+extern "C" int ledOn() {
+   cout << "LED ON" << endl; 
+   return 0;
+}
+
+extern "C" int ledOff() {
+    cout << "LED OFF" << endl;
+    return 0;
+}
+

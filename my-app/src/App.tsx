@@ -8,6 +8,7 @@ import Game from './components/GamePage';
 import Expenses from './components/Expences';
 import Tshirts from './components/Tshirts';
 import XO from './components/XO';
+import Led from './components/led';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/XO" element={<XO />} />
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/t-shirts" element={<Tshirts />} />
+        <Route path="/led" element={<Led />} />
       </Routes>
     </Router>
   );
