@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
+#include <fcntl.h>
+#include <unistd.h>
 #define SIZE 12
 
 using namespace std;
@@ -169,3 +172,4 @@ extern "C" const char* sortingByMaxNumberOfGamers(){
     static string result = oss.str();
     return result.c_str();
 }
+
