@@ -17,7 +17,7 @@ const Expences: React.FC = () => {
             <div>
                 <header>
                     <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-                    <section className="happy-worker-section"><p>Happy worker of the day: </p><RandomGenerator /></section>
+                    <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator /></h3></section>
                 </header>
 
                 <nav>

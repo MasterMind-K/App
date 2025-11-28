@@ -126,19 +126,19 @@ const XO: React.FC = () => {
             <div>
                 <header>
                     <section className="logo-section"><img src={photo} alt="logo" className="logo-image" /></section>
-                    <section className="happy-worker-section"><p>Happy worker of the day: </p><RandomGenerator /></section>
+                    <section className="happy-worker-section"> <h3>Happy worker of the day:<RandomGenerator /></h3></section>
                 </header>
 
                 <nav>
                     <ul className='nav-links'>
                         <li className='links'><Link to="/">Home</Link></li>
-                                    <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
-                                    <li className='links'><Link to="/Quiz">Quiz</Link></li>
-                                    <li className='links'><Link to="/game">Board Games List</Link></li>
-                                    <li className='links'><Link to="/XO">XO Game</Link></li>
-                                    <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
-                                    <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
-                                    <li className='links'><Link to="/led">LED</Link></li>
+                        <li className='links'><Link to="/ToDo-List">To Do List</Link></li>
+                        <li className='links'><Link to="/Quiz">Quiz</Link></li>
+                        <li className='links'><Link to="/game">Board Games List</Link></li>
+                        <li className='links'><Link to="/XO">XO Game</Link></li>
+                        <li className='links'><Link to="/expenses">Expenses Tracker</Link></li>
+                        <li className='links'><Link to="/t-shirts">Company T-shirts</Link></li>
+                        <li className='links'><Link to="/led">LED</Link></li>
                     </ul>
                 </nav>
 
